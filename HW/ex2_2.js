@@ -11,14 +11,16 @@ const DirectorySearch = async dirname =>{
             const curpath = path.join(dirname, file);
             //console.log(curpath);
             fs.stat(curpath, (err, stats)=>{
-                //stats 확인, directory인지 file인지 확인. 
+                //stats 확인, 
+                //directory인지 file인지 확인. 
                 //directory이면 file 더 찾기. file이면 출력.
                 if(stats){
                     if(stats.isDirectory()) DirectorySearch(curpath);
                     else{
                         console.log(curpath);
                     }
-                }  
+                }
+                else console.log(curpath); //stats 비어있으면  
             }) //fs.stat(file, callback), callback = (err, stats)
 
         })
